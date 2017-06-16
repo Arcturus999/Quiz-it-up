@@ -89,12 +89,6 @@ public class QCMController extends HttpServlet {
             list=ConnectBD.Question(type);
             List<List<choix>> list2 = new ArrayList<>();
             list2=ConnectBD.choix(list);
-            for(int i=0;i<list.size();i++){
-                System.out.println(list.get(i).getEnonce());
-                for(int k=0;k<list2.get(i).size();k++){
-                    System.out.println(list2.get(i).get(k).getChoix());
-                }
-            }
             request.setAttribute("Question", list);
             request.setAttribute("Reponse", list2);
             String nextJSP = "/WEB-INF/etudiant/QCM.jsp";

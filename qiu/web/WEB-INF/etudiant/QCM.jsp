@@ -10,7 +10,7 @@
 							<form action="QCMController" method="Post">
 <%
                             int count=0;
-                            if(request.getAttribute("resultats")!=null)
+                            if(request.getAttribute("Question")!=null)
                             {
                                 List<Question> list = (List<Question>)request.getAttribute("Question");
                                 List<List<choix>> list2 = (List<List<choix>>)request.getAttribute("Reponse");
@@ -20,13 +20,15 @@
 							<section class="wrapper style5">
 							<section class="inner">
                                                             <h3 style="margin-left: 50px"><%=i+1%>-<%=list.get(i).getEnonce()%></h3>
-									<div style="margin-left: 150px" class="6u 12u$(small)">
-                                                                            <% for(int k=0;k<list.get(i).getList2().size();k++){ %>
-												<input type="checkbox" id="demo-copy" name="<%=list.get(i).getList2().get(k).getCorrect() %>">
-												<label for="demo-copy"><%=list.get(i).getList2().get(k).getChoix()%></label><br>
+									
+                                                                            <% for(int k=0;k<list2.get(i).size();k++){ %>
+                                                                            <div style="margin-left: 150px" class="6u 12u$(xsmall)">
+												<input type="checkbox" id="demo-priority-<%=k%>" value="<%=list2.get(i).get(k).getCorrect()%>">
+												<label for="demo-priority-<%=k%>"><%=list2.get(i).get(k).getChoix()%></label>
 											
-									    <% } %>
-
+										
+                                                                        </div>
+									    <% } %>	
 							</section>
 							</section>
                                                         <%}
@@ -35,6 +37,7 @@
                                             <input style="margin-left: 1500px" class="button special small" type="submit" value="Valider" />
                                             <br><br><br>
                                             </form>
+                                                        </div>
 
 
 
